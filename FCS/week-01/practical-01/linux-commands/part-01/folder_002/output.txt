@@ -1,4 +1,0 @@
-[0m[01;34mfolder_001[0m/
-[01;34mfolder_002[0m/
-ls_current.txt
-output.txt

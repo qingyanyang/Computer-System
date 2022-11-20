@@ -1,8 +1,0 @@
-class Problem {
-    public static void main(String[]  args) {
-    //define and attribute text1 & text2
-    String text1 = "Today is 18th of March 2022 and this is my first practical exam.", text2 = "I do hope I can solve all the problems.";
-    //print out them
-    System.out.println(text1 + "\n" + text2);
-    }
-}

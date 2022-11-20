@@ -1,2 +1,0 @@
-output.txt
-[0m[01;34mpart-01[0m/

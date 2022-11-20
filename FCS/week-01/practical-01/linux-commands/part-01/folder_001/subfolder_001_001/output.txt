@@ -1,2 +1,0 @@
-ls_current.txt
-output.txt
