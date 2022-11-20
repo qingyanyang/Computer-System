@@ -1,0 +1,7 @@
+Dear manager, 
+
+The problem (1), was due to <sortStringByIndex.()haven't implemented>, I fixed doing <implement this method>;  
+The problem (2), was due to <array is not sorted>, I fixed doing <using binary sort>; 
+The problem (3), was due to <Insertion Sort on branch 551 is not being effient>, I fixed doing <implementing Selection sortByIndex method>;
+
+Kind regards, <Qingyan Yang> <a1865304>

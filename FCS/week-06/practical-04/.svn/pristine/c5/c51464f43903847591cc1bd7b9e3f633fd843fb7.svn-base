@@ -1,0 +1,9 @@
+After writing moves for several times, I found a rule:
+the moves before the last disk move and the moves after the last disk move are symmetrical,
+like Oreo, but with different poleS, poleT, poleD.
+1213121;
+121312141213121;
+So, using recursion:
+solve(n-1) from poleS to poleT;
+the last move from poleS to poleD;
+solve(n-1) from poleT to poleD;

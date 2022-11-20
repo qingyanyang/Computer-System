@@ -1,0 +1,62 @@
+import java.util.Scanner;
+class Interface {
+    public static void main(String[] args){
+
+        Scanner input = new Scanner(System.in).useDelimiter("\n");
+        // getting answer input
+        System.out.print("Welcome dear user!" + "\n" + "\n" + "Would you like to:" + "\n" + "a) sum" + "\n" + "b) exit" + "\n" + "Option: ");
+        char answer = input.next().charAt(0);
+        //define sum as integer
+        float sum, fn = 0.0f, sn = 0.0f;
+            //screen answer"a" start loop
+            while (answer == 'a'){
+                //getting firstNumber input
+                System.out.print("Please, insert the first number: ");
+                String firstNumber = input.next();
+                //screen number
+               do{ if (firstNumber != null && firstNumber.matches("^[0.0-9.0]+$")){
+                    //convert string to number
+                    fn = Float.parseFloat(firstNumber);
+                    }else {
+                          System.out.print("invalid input!Enter again:");
+                          firstNumber = input.next();
+                          //do it again until input is number
+                          if (firstNumber != null && firstNumber.matches("^[0.0-9.0]+$")){
+                          //convert string to number
+                          fn = Float.parseFloat(firstNumber);
+                          }
+                    }
+                }while( !firstNumber.matches("^[0.0-9.0]+$")); //start loop when input is not number
+                //getting secondNumber input
+                System.out.print("Please, insert the second number: ");
+                String secondNumber = input.next();
+                //screen number
+                do{ if (secondNumber != null && secondNumber.matches("^[0.0-9.0]+$")){
+                     //convert string to number
+                    sn = Float.parseFloat(secondNumber);
+                }else {
+                    System.out.print("invalid input!Enter again:");
+                    secondNumber = input.next();
+                    //do it again until input is number
+                    if (secondNumber != null && secondNumber.matches("^[0.0-9.0]+$")){
+                    //convert string to number
+                    sn = Float.parseFloat(secondNumber);
+                }
+                }
+                }while( !secondNumber.matches("^[0.0-9.0]+$"));//start loop when input is not number
+
+                //attributing sum
+                sum = fn + sn;
+                System.out.println("----" + "\n" +"Thank you for your enquiry, the sum between " + fn + " and " + sn + " is " + sum + ".");
+                //joint loop
+                System.out.print("Would you like to:" + "\n" + "a) sum again" + "\n" + "b) exit" + "\n" + "Option: ");
+                answer = input.next().charAt(0);
+            }
+            //screen answer"b"
+            if (answer == 'b'){
+             System.out.println("Thank you! Have a good day.");
+            }else{
+                System.out.println("Invalid input!");
+            }
+    }
+}

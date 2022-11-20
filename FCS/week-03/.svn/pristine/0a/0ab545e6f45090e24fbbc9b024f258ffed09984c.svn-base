@@ -1,0 +1,32 @@
+import java.util.Scanner;
+class Problem{
+    public static void main(String[] args){
+	int i = 1,j;
+	String width = "", height = "";
+	Scanner input = new Scanner(System.in);
+	System.out.print("Enter width and height to draw a rectangular shape (type 0 to finish)");
+	int widthNumber = input.nextInt(), heightNumber = input.nextInt();
+	do {
+	if (widthNumber == heightNumber){
+	   System.out.println("Drawing a squre of size " + widthNumber);
+	   for(j = 1; j <= heightNumber; j++){
+	   while(i <= widthNumber){
+	   width += "#";
+	   i++;
+	   System.out.println(width);	
+	   }
+	}
+	}else if(widthNumber != heightNumber){
+		System.out.println("Drawing a restangle of size " + widthNumber + " by " + heightNumber);
+	      for(j = 1; j <= heightNumber; j++){
+	      while(i <= widthNumber){
+	      width += "#";
+	      i++;
+	      System.out.println(width);	
+	      }
+			
+         	}
+		}
+	}while(widthNumber != 0 || heightNumber != 0);	
+    }
+}

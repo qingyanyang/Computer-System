@@ -1,0 +1,75 @@
+import java.util.Scanner;
+class Main{
+        // design a method called "run", the input value is integer,return value is string
+        public static String run(int amount){
+        // define varibles
+        String message, string_x, string_y;
+        int x, y;
+
+        //screen out valid number under 50
+        if (amount < 50){
+            if (amount % 20 == 0 && amount > 0){ // screen valid number under 50
+                x = amount / 20;
+                y = 0;
+                // convert int x,y into string
+                string_x = String.valueOf(x);
+                string_y = String.valueOf(y);
+                message = "Here is " + string_x + " $20 notes and " + string_y + " $50 notes.";
+                return message;
+            }else{
+            message = "Sorry,the value you input cannot be withdrew";
+            return message;
+            }
+        }else if(amount % 10 != 0){ // screen out numbers over 50 and can not be divided by 10
+               message = "Sorry,the value you input cannot be withdrew";
+               return message;
+              }else if(amount % 50 % 20 == 0){ //numbers over 50 and can be divided by 10 are all valid
+                     y = amount / 50; // caculate biggest y
+                     x = amount % 50 / 20;
+                     // convert int x,y into string
+                     string_x = String.valueOf(x);
+                     string_y = String.valueOf(y);
+                     message = "Here is " + string_x + " $20 notes and " + string_y + " $50 notes.";
+                     return message;
+                     }else{
+                         y = amount / 50 - 1; // biggest y reverse 1,the reminder can be divided by 20
+                         x = (amount - 50 * y) / 20;
+                          // convert int x,y into string
+                         string_x = String.valueOf(x);
+                         string_y = String.valueOf(y);
+                         message = "Here is " + string_x + " $20 notes and " + string_y + " $50 notes.";
+                         return message;
+                         }
+        }
+
+
+
+        public static void main(String[] args){
+            Scanner input = new Scanner(System.in).useDelimiter("\n");
+            String message = "";
+            int amountNumber = 0;
+            //get users input
+            System.out.print("Welcome!" + "\n" + "please enter the withdrawal amount: ");
+            String amount = input.next();
+
+            do{ if (amount != null && amount.matches("^[0-9]+$")){
+                    //convert string to integer
+                amountNumber = Integer.parseInt(amount);
+                    }else {
+                          System.out.print("invalid input!Enter again:");
+                          amount = input.next();
+                          //do it again until input is integer
+                          if (amount != null && amount.matches("^[0-9]+$")){
+                          //convert string to integer
+                          amountNumber = Integer.parseInt(amount);
+                          }
+                    }
+                }while( !amount.matches("^[0-9]+$")); //start loop when input is not integer
+
+            //use the run method to get different string message
+            message = run(amountNumber);
+            System.out.println(message);
+        }
+
+
+    }

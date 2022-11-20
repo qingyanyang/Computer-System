@@ -1,0 +1,117 @@
+public class MyBST{
+	private Node root;
+	//defualt contrsuctor
+	public MyBST(){
+		root = null;
+	}
+	//accessor
+	public Node getRoot(){
+		return this.root;
+	}
+	//mutator
+	public void setRoot(Node root){
+		this.root = root;
+	}
+	//method insert without node parameter
+	public void insert(int value){
+		//Node tmp = this.root;
+		this.root = this.insertRec1(this.root, value);
+		//this.insertRec1(this.root, value);
+	}
+	//method insert with node parameter
+	public Node insertRec1(Node current, int value){
+		if(current == null){
+			current = new Node(value);
+			return current;
+		}else{
+			if(value < current.getData()){
+				current.setLeft(insertRec1(current.getLeft(), value));
+			}else if(value > current.getData()){
+				current.setRight(insertRec1(current.getRight(), value));
+			}else{
+				System.out.println("Node " + value +" is in the tree");
+			}
+			return current;
+		}
+	}
+
+	//method insert with node parameter
+	public void insertRec(Node current, int value){
+		if(current == null){
+			this.root = new Node(value);
+		}else{
+			if(value < current.getData()){
+				if(current.getLeft() != null){
+					insertRec(current.getLeft(), value);
+				}else{
+					Node left = new Node(value);
+					current.setLeft(left);
+				}
+			}else if(value > current.getData()){
+				if(current.getRight() != null){
+					insertRec(current.getRight(), value);
+				}else{
+					Node right = new Node(value);
+					current.setRight(right);
+				}
+			}else{
+				System.out.println("Node " + value +" is in the tree");
+			}
+		}
+	}
+	//method search without node parameter
+	public boolean search(int value){
+		return this.searchRec(this.root, value);
+	}
+	//method search with node parameter
+	private boolean searchRec(Node current, int value){
+		if(current != null){
+			if(value < current.getData()){
+				return searchRec(current.getLeft(), value);
+			}else if(value > current.getData()){
+				return searchRec(current.getRight(), value);
+			}else{
+				return true;
+			}
+		}
+		return false;
+	}
+	//method to count steps
+	private int searchStepRec(int value){
+		Node tmp = this.root;
+		int count = 0;
+		while(tmp != null){
+			if(value < tmp.getData()){
+				count++;
+				tmp = tmp.getLeft();
+			}else if(value > tmp.getData()){
+				count++;
+				tmp = tmp.getRight();
+			}else{
+				count++;
+				return count;
+			}
+		}
+		return count;
+	}
+	//method to count steps
+	public void searchStep(int value){
+		int step = searchStepRec(value);
+		System.out.println("Totally compared " + step + " times.");
+	}
+
+	//display tree with node parameter
+	private void preOrderDisplayRec(Node root){
+		if(root != null){
+			root.printNode();
+			System.out.print(" ");
+			preOrderDisplayRec(root.getLeft());
+			preOrderDisplayRec(root.getRight());
+		}
+	}
+	//display tree without node parameter
+	public void preOrderDisplay(){
+		this.preOrderDisplayRec(this.root);
+		System.out.println("");
+	}
+}

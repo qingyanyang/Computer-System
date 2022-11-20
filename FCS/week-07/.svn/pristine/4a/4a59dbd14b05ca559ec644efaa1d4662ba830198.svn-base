@@ -1,0 +1,22 @@
+public class InsertionSort extends MySortAlg{
+    //default constructor
+    public InsertionSort(){
+        super();
+    }
+    //detailed sort method with insertion algorithm
+    public int[] sort(int[] array){
+        this.n = array.length;
+        for(int i = 1; i < n; i++){
+            int j = i;
+            while(array[j] > array[j - 1]){
+                int tmp = array[j];
+                array[j] = array[j - 1];
+                array[j - 1] = tmp;
+                j--;
+                if(j < 1)
+                    break;
+            }
+        }
+        return array;
+    }
+}

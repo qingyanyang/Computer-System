@@ -1,0 +1,64 @@
+public class MergeSort extends MySortAlg{
+    //default constructor
+    public MergeSort(){
+        super();
+    }
+    //detailed sort method with merge algorithm
+    public int[] sort(int[] array){
+        this.n = array.length;
+        if(this.n <= 1){
+            return array;
+        }else{
+            int m = Math.round(n / 2.0f);
+            int [] arr1 = new int[m];
+            int [] arr2 = new int[n - m];
+            for(int i = 0; i < m; i++)
+                arr1[i] = this.getArray(array, 0 , m - 1)[i];
+            for(int j = 0; j < n - m; j++)
+                arr2[j] = this.getArray(array, m, n - 1)[j];
+            return this.merge(this.sort(arr1), this.sort(arr2));
+        }
+    }
+    //method to get new array with attributes from previous array
+    private int[] getArray(int[] array, int start_index, int end_index){
+        int n = end_index - start_index + 1;
+        if(n < 1){
+            int [] newArray = {};
+            return newArray;
+        }else{
+            int [] newArray = new int[n];
+            int j = 0;
+            for(int i = start_index; i <= end_index; i++){
+                newArray[j] = array[i];
+                j++;
+            }
+            return newArray;
+        }
+    }
+    //method to merge two sorted arrays into one sorted array
+    private int[] merge(int[] arr1, int[] arr2){
+        int n = arr1.length;
+        int m = arr2.length;
+        int[] newArray = new int[n + m];
+        int i = 0, j = 0, k = 0;
+        //compare two arrays by their elements from index 0 to end
+        while(i < n && j < m){
+            if(arr1[i] > arr2[j]){
+                newArray[k] = arr1[i];
+                i++;
+            }else{
+                newArray[k] = arr2[j];
+                j++;
+            }
+            k++;
+        }
+        //add the rest elements to new array
+        while(i < n){
+            newArray[k++] = arr1[i++];
+        }
+        while(j < m){
+            newArray[k++] = arr2[j++];
+        }
+        return newArray;
+    }
+}

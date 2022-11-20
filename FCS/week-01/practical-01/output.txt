@@ -1,0 +1,2 @@
+[0m[01;34mlinux-commands[0m/
+output.txt

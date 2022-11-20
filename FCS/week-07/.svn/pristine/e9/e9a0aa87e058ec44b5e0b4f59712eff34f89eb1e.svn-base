@@ -1,0 +1,115 @@
+public class Student{
+    String name;
+    int physics;
+    int chemistry;
+    int math;
+    int average;
+    Student [] student;
+    //default constructor
+    public Student(){
+        name = "Chelsea";
+        physics = 98;
+        chemistry = 87;
+        math = 68;
+        average = 0;
+        student = new Student[20];
+    }
+    //parametric constructor
+    public Student(String name, int physics, int chemistry, int math){
+        this();
+        this.name = name;
+        this.physics = physics;
+        this.chemistry = chemistry;
+        this.math = math;
+        this.average = Math.round((physics + chemistry + math) / 3.0f);
+    }
+    //accessors to get value
+    public String getName(){
+        return this.name;
+    }
+    public int getPhysics(){
+        return this.physics;
+    }
+    public int getChemistry(){
+        return this.chemistry;
+    }
+    public int getMath(){
+        return this.math;
+    }
+    public int getAverage(){
+        return this.average;
+    }
+    //mutators for set value
+    public void setName(String name){
+        this.name = name;
+    }
+    public void setPhysic(int physics){
+        this.physics = physics;
+    }
+    public void setChemistry(int chemistry){
+        this.chemistry = chemistry;
+    }
+    public void setMath(int math){
+        this.math = math;
+    }
+    public void setAverage(int average){
+        this.average = average;
+    }
+    //method to sort array in bubble algorithm
+    public Student[] sortStudents(Student[] students){
+        int n = students.length;
+        for(int i = 0; i < n; i++){
+            for(int j = 0; j < n - i - 1; j++){
+                if(students[j].average < students[j + 1].average){
+                    Student tmp = students[j];
+                    students[j] = students[j + 1];
+                    students[j + 1] = tmp;
+                }else if(students[j].average == students[j + 1].average){
+                    if(students[j].physics < students[j + 1].physics){
+                        Student tmp = students[j];
+                        students[j] = students[j + 1];
+                        students[j + 1] = tmp;
+                    }else if(students[j].physics == students[j + 1].physics){
+                        if(students[j].chemistry < students[j + 1].chemistry){
+                            Student tmp = students[j];
+                            students[j] = students[j + 1];
+                            students[j + 1] = tmp;
+                        }else if(students[j].chemistry == students[j + 1].chemistry){
+                            if(students[j].math < students[j + 1].math){
+                                Student tmp = students[j];
+                                students[j] = students[j + 1];
+                                students[j + 1] = tmp;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return students;
+    }
+    //method to save data
+    public static Student[] data(){
+        Student tmp = new Student();
+        tmp.student[0] = new Student("John", 95, 75, 88);
+        tmp.student[1] = new Student("Alice", 88, 95, 75);
+        tmp.student[2] = new Student("Johnson", 95, 75, 88);
+        tmp.student[3] = new Student("Dennis", 60, 100, 100);
+        tmp.student[4] = new Student("Jack", 77, 84, 93);
+        tmp.student[5] = new Student("Tod", 84, 86, 80);
+        tmp.student[6] = new Student("Tom", 68, 70, 75);
+        tmp.student[7] = new Student("Dave", 90, 90, 92);
+        tmp.student[8] = new Student("David", 99, 70, 87);
+        tmp.student[9] = new Student("Trent", 89, 77, 90);
+        tmp.student[10] = new Student("Bob", 100, 67, 89);
+        tmp.student[11] = new Student("Fiona", 77, 89, 90);
+        tmp.student[12] = new Student("Peter", 80, 88, 82);
+        tmp.student[13] = new Student("Amy", 85, 95, 78);
+        tmp.student[14] = new Student("Nancy", 83, 93, 82);
+        tmp.student[15] = new Student("Richard", 81, 91, 86);
+        tmp.student[16] = new Student("Daniel", 77, 78, 79);
+        tmp.student[17] = new Student("James", 80, 90, 85);
+        tmp.student[18] = new Student("Cathy", 95, 74, 89);
+        tmp.student[19] = new Student("Paul", 84, 87, 79);
+        return tmp.student;
+    }
+}

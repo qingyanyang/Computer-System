@@ -1,0 +1,144 @@
+import java.util.Scanner;
+class MathematicalOperations {
+    // create screen method to add "+" "-" in front of numbers
+    public static String screen(float f){
+        String text = "";
+        if(f >= 0.0f){//positive number add "+"
+            text = " + " + String.valueOf(f);
+            return text;
+        }
+        else{//negative number add "-"
+            f = -f;
+            text = " - " + String.valueOf(f);
+            return text;
+        }
+    }
+    // create zero method to delete "0" parts in the display
+    public static String zero(float real, float imagine){
+        String text = "";
+        if(real != 0.0f && imagine != 0)// all parts != 0, then all need to be displaied
+            text = String.valueOf(real) + screen(imagine) + "i";
+        else if(real == 0.0f)//real part = 0, the real part can not be presented
+            text = imagine + "i";
+        if(imagine == 0.0f)//imaginary part = 0, the real part can not be presented
+            text = String.valueOf(real);
+
+        return text;
+    }
+    //create add method to calulate and display addtion of two complex numbers
+    public static String add(float a, float b, float c, float d){
+        String addition = "";
+        float real = a + c;
+        float imagine = b + d;
+        addition = zero(real, imagine);
+        return addition;
+    }
+    //create sub method to calulate and display subtraction of two complex numbers
+    public static String sub(float a, float b, float c, float d){
+        String subtraction = "";
+        float real = a - c;
+        float imagine = b - d;
+        subtraction = zero(real, imagine);
+        return subtraction;
+    }
+    ////create multiply method to calulate and display multiplication of two complex numbers
+    public static String multiply(float a, float b, float c, float d){
+        String multiplication = "";
+        float real = a * c - b * d;
+        float imagine = b * c + a * d;
+        multiplication = zero(real, imagine);
+        return multiplication;
+    }
+    //create divide method to calulate and display division of two complex numbers
+    public static String divide(float a, float b, float c, float d){
+        String division = "";
+        float real = (a * c + b * d)/(c * c + d * d);
+        float imagine = (b * c - a * d)/(c * c + d * d);
+        division = zero(real, imagine);
+        return division;
+    }
+
+    public static void main(String[] args){
+        //user input 2 parts of 2 complex numbers
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter number 'a' of the first complex number a + bi: ");
+        String numberA = input.next();
+
+        //use numberScreen method which made in class NumberScreen
+        NumberScreen identify1 = new NumberScreen();
+        identify1.numberScreen(numberA);
+        float numbera = identify1.number;
+
+        System.out.println("Enter number 'b' of the first complex number a + bi: ");
+        String numberB = input.next();
+
+        //use numberScreen method which made in class NumberScreen
+        NumberScreen identify2 = new NumberScreen();
+        identify2.numberScreen(numberB);
+        float numberb= identify2.number;
+        String numberbText = screen(numberb);// "+""-"in front of imaginary part
+
+        System.out.println("Enter number 'c' of the second complex number c + di: ");
+        String numberC = input.next();
+
+        //use numberScreen method which made in class NumberScreen
+        NumberScreen identify3 = new NumberScreen();
+        identify3.numberScreen(numberC);
+        float numberc= identify3.number;
+
+        System.out.println("Enter number 'd' of the second complex number c + di: ");
+        String numberD = input.next();
+
+        //use numberScreen method which made in class NumberScreen
+        NumberScreen identify4 = new NumberScreen();
+        identify4.numberScreen(numberD);
+        float numberd= identify4.number;
+        String numberdText = screen(numberd);// "+""-"in front of imaginary part
+
+        //print out the two complex numbers users input
+        System.out.println("You entered:" + "\n" + numbera + numberbText + "i " + "and " + numberc + numberdText + "i");
+        //options "a,b,c,d"
+        System.out.println("Would you like:" + "\n" + "a. Addition of the two complex numbers" + "\n" + "b. Subtraction of the two complex numbers" + "\n" + "c. Multiplication of the two complex numbers" + "\n" + "d. Division of the two complex numbers");
+        String option = input.next();
+
+        if(option.equals("a")){//screen a and use method add
+            String text = add(numbera,numberb,numberc,numberd);
+            System.out.println("the addition is: " + text);
+        }
+        else if(option.equals("b")){//screen b and use method sub
+            String text = sub(numbera,numberb,numberc,numberd);
+            System.out.println("the subtraction is: " + text);
+        }
+        else if(option.equals("c")){//screen c and use method multiply
+            String text = multiply(numbera,numberb,numberc,numberd);
+            System.out.println("the multiplication is: " + text);
+        }
+        else if(option.equals("d")){//screen d and use method divide
+            String text = divide(numbera,numberb,numberc,numberd);
+            System.out.println("the division is: " + text);
+        }
+        else{//screen out invalid input
+            do{ System.out.println("Invalid input! Try again: ");//start loop while input is invalid
+                option = input.next();
+
+                if(option.equals("a")){
+                    String text = add(numbera,numberb,numberc,numberd);
+                    System.out.println("the addition is: " + text);
+                }
+                else if(option.equals("b")){
+                    String text = sub(numbera,numberb,numberc,numberd);
+                    System.out.println("the subtraction is: " + text);
+                }
+                else if(option.equals("c")){
+                    String text = multiply(numbera,numberb,numberc,numberd);
+                    System.out.println("the multiplication is: " + text);
+                }
+                else if(option.equals("d")){
+                    String text = divide(numbera,numberb,numberc,numberd);
+                    System.out.println("the division is: " + text);
+                }
+            }while(!option.equals("a") && !option.equals("b") && !option.equals("c") && !option.equals("d"));
+
+        }
+    }
+}

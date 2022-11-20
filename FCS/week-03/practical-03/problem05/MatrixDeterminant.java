@@ -1,0 +1,109 @@
+import java.util.Scanner;
+class MatrixDeterminant{
+    //create method for calculating matrix
+    public static float determinant(float[][] matrix){
+        float de = 0;
+        if (matrix.length == 2){//the way to calculate 2x2
+            de = matrix[0][0] * matrix[1][1] -matrix[0][1] * matrix[1][0];
+        }
+        if (matrix.length == 3){//the way to calsulate 3x3
+            de = matrix[0][0] * (matrix[1][1] * matrix[2][2] - matrix[1][2] * matrix[2][1]) - matrix[0][1] * (matrix[1][0] * matrix[2][2] - matrix[1][2] * matrix[2][0]) + matrix[0][2] * (matrix[1][0] * matrix[2][1] - matrix[1][1] * matrix[2][0]);
+        }
+        return de;
+    }
+
+    //create method for identifying 2x2 or 3x3
+    public static void identify(String dimension){
+        Scanner input = new Scanner(System.in);
+        //screen 2x2
+        if(dimension.equals("2x2")){
+            float[][] matrix2x2 = new float[2][2];
+            System.out.println("Great! Let's calculate this determinant then." + "\n" + "Please insert all the values for your matrix." +"\n");
+            //attributing matrix2x2
+            for(int i = 0; i < matrix2x2.length; i++){
+                for(int j = 0; j < matrix2x2[i].length; j++){
+                    int k = i+1, l = j+1;//number in matrix[][]
+                    System.out.print("New matrix " + "[" + k + "]" + "[" + l +"]: ");
+                    String elementText = input.next();//get input from user
+                    //create object
+                    NumberScreen identify1 = new NumberScreen();
+                    //use class Problem03 / numberScreen method
+                    identify1.numberScreen(elementText);
+                    //use class Problem03 / number variable and attribute to a new float variable as element of array matrix2x2
+                    float element = identify1.number;
+                    matrix2x2[i][j] = element;
+                }
+            }
+            float de = determinant(matrix2x2);//use determinat method to caculate determinant of 2x2
+            System.out.println("The determinant of your matrix is:" + "\n" + "|" + matrix2x2[0][0] + "," + matrix2x2[0][1] + "|" + "\n" + "|" + matrix2x2[1][0] + "," + matrix2x2[1][1] + "|");
+            System.out.println("Determinant: " + de);
+        }
+        //screen 3x3
+        if(dimension.equals("3x3")){
+            float[][] matrix3x3 = new float[3][3];
+            System.out.println("Great! Let's calculate this determinant then." + "\n" + "Please insert all the values for your matrix." +"\n");
+            //attributing matrix3x3
+            for(int i = 0; i < matrix3x3.length; i++){
+                for(int j = 0; j < matrix3x3[i].length; j++){
+                    int k = i+1, l = j+1;//number in matrix[][]
+                    System.out.print("New matrix " + "[" + k + "]" + "[" + l +"]: ");
+                    String elementText = input.next();
+                    //create object
+                    NumberScreen identify2 = new NumberScreen();
+                    //use class Problem03 / numberScreen method
+                    identify2.numberScreen(elementText);
+                    //use class Problem03 / number variable and attribute to a new float variable as element of array matrix3x3
+                    float element = identify2.number;
+                    matrix3x3[i][j] = element;
+                }
+            }
+            float de = determinant(matrix3x3);//use determinat method to caculate determinant of 2x2
+            System.out.println("The determinant of your matrix is:" + "\n" + "|" + matrix3x3[0][0] + "," + matrix3x3[0][1] + "," + matrix3x3[0][2] + "|" + "\n" + "|" + matrix3x3[1][0] + "," + matrix3x3[1][1] + "," + matrix3x3[1][2] + "|" + "\n" + "|" + matrix3x3[2][0] + "," + matrix3x3[2][1] + "," + matrix3x3[2][2] + "|");
+            System.out.println("Determinant: " + de);
+        }
+    }
+
+
+    public static void main(String[] args){
+        Scanner input = new Scanner(System.in);
+        System.out.print("Welcome to Matrix Determinant Calculor!" + "\n" + "Would you like to calculate the determinant of a matrix?" + "\n" + "1. Yes, 2. No" + "\n" + "\n" + "Option: ");
+        String option = input.next();
+        // identify result of "1", if it is, keep going steps
+        while (option.equals("1")){
+            System.out.print("What is the dimension of the matrix?" + "\n" + "Input: ");
+            String dimension = input.next();
+            identify(dimension);//use identify method to identify and caculate 2x2 and 3x3
+            while(!dimension.equals("2x2") && !dimension.equals("3x3")){//screen invalid input until input is valid
+                System.out.print("Invalid input! Try again:");
+                dimension = input.next();
+                identify(dimension);
+            }
+            System.out.print("Welcome to Matrix Determinant Calculor!" + "\n" + "Would you like to calculate the determinant of a new matrix?" + "\n" + "1. Yes, 2. No" + "\n" + "\n" + "Option: ");
+            option = input.next();
+        }// the program can be run forever while option is 1
+
+        if(!option.equals("2") && !option.equals("1")){//screen out invalid option
+            System.out.print("Invalid input! Try again:");
+            option = input.next();
+            do{
+                if(!option.equals("2") && !option.equals("1")){
+                    System.out.print("Invalid input! Try again:");
+                    option = input.next();
+                }
+                while (option.equals("1")){
+                    System.out.print("What is the dimension of the matrix?" + "\n" + "Input: ");
+                    String dimension = input.next();
+                    identify(dimension);
+                    while(!dimension.equals("2x2") && !dimension.equals("3x3")){
+                        System.out.print("Invalid input! Try again:");
+                        dimension = input.next();
+                        identify(dimension);
+                    }
+                    System.out.print("Welcome to Matrix Determinant Calculor!" + "\n" + "Would you like to calculate the determinant of a new matrix?" + "\n" + "1. Yes, 2. No" + "\n" + "\n" + "Option: ");
+                    option = input.next();
+                }
+
+            }while(!option.equals("2") && !option.equals("1"));// start a loop until input is valid
+        }
+    }
+}

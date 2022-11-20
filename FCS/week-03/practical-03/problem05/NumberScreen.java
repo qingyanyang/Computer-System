@@ -1,0 +1,23 @@
+import java.util.Scanner;
+class NumberScreen {
+    float number;
+    public float numberScreen(String numberText){
+        float number = 0.0f;
+        //screen number
+        if (numberText != null && numberText.matches("^[-\\+]?[0.0-9.0]+$")){
+            number = Float.parseFloat(numberText);//convert string to float
+        }
+        else{
+            do{ //start loop if input is not number
+                Scanner input = new Scanner(System.in).useDelimiter("\n");
+                System.out.print("invalid input!Enter again:");
+                numberText = input.next();
+                // try again
+                if (numberText != null && numberText.matches("^[-\\+]?[0.0-9.0]+$")){
+                    number = Float.parseFloat(numberText);//convert string to float
+                }
+            }while( !numberText.matches("^[-\\+]?[0.0-9.0]+$"));
+        }
+        return number;
+    }
+}

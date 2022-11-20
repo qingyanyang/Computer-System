@@ -1,0 +1,44 @@
+import java.util.*;
+class Problem03 {
+    public static void main(String[] args) {
+	// creat random object
+	Random ran = new Random();
+	// define variables
+	int i = 0, j = 0, positiveNumber, executeTime, sum =0, roundAverage;
+	String result = "", averageResult = "";
+
+	// creat 10 random number with value between 0-20
+	for(executeTime = 1; executeTime <= 10; executeTime++){
+
+	positiveNumber = ran.nextInt(21);
+	// attribute sum
+	sum +=positiveNumber;
+
+	//screen even number
+	if (positiveNumber % 2 == 0){
+	// attribute result
+	    while(i < positiveNumber){
+	    result += "+";
+	    i++;
+	    }
+	System.out.println("Number" + "(" + positiveNumber + "): " + result);
+	}else{// screen odd number and attribute it
+	    while(i < positiveNumber){
+	    result += "-";
+	    i++;
+	    }
+	System.out.println("Number" + "(" + positiveNumber + "): " + result);
+	}
+	// clear the value of i and result
+	i -= positiveNumber;
+	result = "";
+	}
+	// calculate and attribute average
+	roundAverage = Math.round((float)sum / executeTime);
+	    while(j < roundAverage){
+	    averageResult += "*";
+	    j++;
+	    }
+	System.out.println("Average" + "(" + roundAverage + "): " + averageResult);
+    }
+}

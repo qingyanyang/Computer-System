@@ -1,0 +1,26 @@
+public class Node{
+	private String data; // the data saved in this node
+	private Node next; // the reference to another node
+	public Node(){
+		data = "";
+		next = null;
+	}
+	//accessors
+	public String getDate(){
+		return this.data;
+	}
+	public String getNext(){
+		return this.next;
+	}
+	//mutators
+	public void setData(String data){
+		this.data = data;
+	}
+	public void setNext(Node next){
+		this.next = next;
+	}
+	// Print the data saved in the node. 
+	public void printNode(){
+		System.out.println("data saved in this node");
+	}
+}
