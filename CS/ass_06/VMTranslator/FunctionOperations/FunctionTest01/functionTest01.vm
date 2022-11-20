@@ -1,0 +1,14 @@
+// function test case
+
+push static 0
+call functionTest01.neg 1
+pop static 1
+label END
+goto END
+
+function functionTest01.neg 0
+push argument 0
+neg
+
+return 
+

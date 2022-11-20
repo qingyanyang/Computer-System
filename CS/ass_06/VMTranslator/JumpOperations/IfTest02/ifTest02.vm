@@ -1,0 +1,14 @@
+// if-goto test case
+push local 1
+push constant 6
+gt
+if-goto NEXT
+push local 1
+push constant 0
+gt
+if-goto END
+push constant 3
+label NEXT
+push local 0
+label END
+pop static 0

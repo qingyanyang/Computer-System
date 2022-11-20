@@ -1,0 +1,5 @@
+// push test case
+push constant 1
+push static 0
+push pointer 0
+push that 1 

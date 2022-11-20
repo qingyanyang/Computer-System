@@ -1,0 +1,5 @@
+// and test case
+push constant 5
+push constant 3
+and
+pop static 0

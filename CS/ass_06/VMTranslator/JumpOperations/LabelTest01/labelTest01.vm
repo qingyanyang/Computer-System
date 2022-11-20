@@ -1,0 +1,7 @@
+// label test case
+push local 2
+goto END
+pop static 0
+label END
+pop static 1
+

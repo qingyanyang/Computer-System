@@ -1,0 +1,67 @@
+// Calculates a = x*y
+// a is a local variable
+// x & y are static variables
+
+// Put your code here.
+//if x = 0
+//jump to ZERO
+push static 0
+push constant 0
+eq
+if-goto zero
+//else if x > 0, jump to POITIVE
+push static 0
+push constant 0
+gt
+if-goto positive
+//else if x < 0, temp = -x
+push constant 0
+push static 0
+sub
+pop local 3
+goto next
+//temp = x
+label positive
+push static 0
+pop local 3
+//sum = 0
+label next
+push constant 0
+pop local 0
+//start loop
+//if temp = 0, jump out of the loop
+label loop
+push local 3
+push constant 0
+eq
+if-goto judge
+//else, sum += y
+push local 0
+push static 1
+add
+pop local 0
+//temp--
+push local 3
+push constant 1
+sub
+pop local 3
+goto loop
+//when x = 0, a=0
+label zero
+push constant 0
+pop local 0
+goto end
+//terminal
+label judge
+push static 0
+push constant 0
+lt
+if-goto neg
+goto end
+label neg
+push constant 0
+push local 0
+sub
+pop local 0
+label end
+goto end

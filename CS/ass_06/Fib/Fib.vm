@@ -1,0 +1,33 @@
+// Contains a function Fib.fib that calculates and returns the nth Fibonacci number recursively
+// n is supplied as an argument
+
+// Put your code here./Users/yangqingyan/Desktop/prac6/Fib/Fib00.tst
+
+function Fib.fib 0
+
+//if n < 2
+push argument 0
+push constant 2
+lt
+if-goto stop
+
+//else
+//return fib(n-1)+fib(n-2)
+push argument 0
+push constant 1
+sub
+call Fib.fib 1
+
+push argument 0
+push constant 2
+sub
+call Fib.fib 1
+
+add
+return
+
+label stop
+push argument 0
+return
+
+

@@ -1,0 +1,5 @@
+// or test case
+push constant 4
+push constant 3
+or
+pop static 0

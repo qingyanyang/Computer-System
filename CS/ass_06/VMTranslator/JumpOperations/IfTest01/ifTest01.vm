@@ -1,0 +1,9 @@
+// if-goto test case
+push local 1
+if-goto NEXT
+push local 1
+goto END
+label NEXT
+push local 0
+label END
+pop static 0

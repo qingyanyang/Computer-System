@@ -1,0 +1,7 @@
+// lt test case
+push constant 5
+push constant 7
+sub
+push constant 6
+lt
+pop static 0

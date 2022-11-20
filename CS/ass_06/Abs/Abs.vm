@@ -1,0 +1,27 @@
+// Calculates y = |x|
+// x & y are static variables
+
+// Put your code here.
+//if x=0 jump to label TRUE, y = x
+push static 0
+push constant 0
+eq
+if-goto true
+//if x>0 jump to label TRUE, y = x
+push static 0
+push constant 0
+gt
+if-goto true
+//else x<0, y = -x
+push constant 0
+push static 0
+sub
+pop static 1
+goto end
+//label true
+label true
+push static 0
+pop static 1
+//terminal
+label end
+goto end

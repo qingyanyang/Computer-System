@@ -1,0 +1,7 @@
+// pop test case
+push constant 3
+push constant 3002
+push constant 7
+pop static 0
+pop pointer 0
+pop temp 1 

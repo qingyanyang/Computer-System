@@ -1,0 +1,4 @@
+// not test case
+push constant 4
+not
+pop static 0

@@ -1,0 +1,26 @@
+// return test case
+
+push static 0
+call returnTest02.neg 1
+pop static 0
+
+push constant 3
+call returnTest02.subAdd 1
+
+pop static 1
+
+label END
+goto END
+
+function returnTest02.neg 0
+push argument 0
+neg
+return 
+
+function returnTest02.subAdd 2
+push local 0
+push argument 0
+sub
+push local 1
+add
+return 

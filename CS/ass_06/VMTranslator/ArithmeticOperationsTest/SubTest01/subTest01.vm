@@ -1,0 +1,5 @@
+// sub test case
+push constant 20
+push constant 7
+sub
+pop static 0

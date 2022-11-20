@@ -1,0 +1,15 @@
+// return test case
+
+push static 0
+call returnTest01.add 1
+pop static 1
+label END
+goto END
+
+function returnTest01.add 1
+push local 0
+push argument 0
+add
+
+return 
+

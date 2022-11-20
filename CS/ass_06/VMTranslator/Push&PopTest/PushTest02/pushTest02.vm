@@ -1,0 +1,5 @@
+// push test case
+push argument 2
+push temp 0
+push this 0
+push local 3

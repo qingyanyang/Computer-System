@@ -1,0 +1,7 @@
+// goto test case
+push constant 10
+goto END
+pop static 1
+label END
+pop static 0
+

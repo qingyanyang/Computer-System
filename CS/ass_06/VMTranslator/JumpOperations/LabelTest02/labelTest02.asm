@@ -1,0 +1,17 @@
+(LOOP)
+@10
+D=A
+@SP
+AM=M+1
+A=A-1
+M=D
+@END
+0;JMP
+@LOOP
+0;JMP
+(END)
+@SP
+AM=M-1
+D=M
+@16
+M=D

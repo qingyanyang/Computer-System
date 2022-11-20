@@ -1,0 +1,5 @@
+// eq test case
+push constant 5
+push constant 5
+eq
+pop static 0

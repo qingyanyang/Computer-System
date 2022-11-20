@@ -1,0 +1,14 @@
+// call test case
+
+push static 0
+call callTest02.not 1
+pop static 1
+label END
+goto END
+
+function callTest02.not 0
+push argument 0
+not
+
+return 
+
